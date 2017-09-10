@@ -7,7 +7,8 @@ angular.module('myContacts',['ngRoute','myContacts.contacts','firebase'])
   $locationProvider.hashPrefix('!');
   $routeProvider.otherwise({redirectTo: '/contacts'});
     
-     var config = {
+    //configure firebase
+    var config = {
     apiKey: "AIzaSyDiXXVEpACr1BVgh0hdsPFjQMHsW1ui-_Y",
     authDomain: "mycontacts-a8f39.firebaseapp.com",
     databaseURL: "https://mycontacts-a8f39.firebaseio.com",

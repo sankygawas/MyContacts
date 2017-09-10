@@ -9,8 +9,11 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
   });
 })
 
+//constants
+.constant('constants', { EMPTY_STRING: '' })
+
 //contacts Controller
-.controller('ContactsController',['$scope','$firebaseObject','$firebaseArray',function($scope,$firebaseObject,$firebaseArray) {
+.controller('ContactsController',['$scope','$firebaseObject','$firebaseArray','constants',function($scope,$firebaseObject,$firebaseArray,constants) {
     
     //initialize firebase
     var ref = firebase.database().ref();
@@ -27,7 +30,49 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
     
     //add the contact
     $scope.submitAddContactForm = function(){
+        //Build and add object
+        $scope.contacts.$add($scope.addObject())
+            .then(function(){
+            
+            //clear the foem fileds
+            $scope.clearFields();
+            
+            //hide the form
+            $scope.isAddFormShow  = false;
+        });
+    }
+    
+     //delete the contact
+    $scope.deleteContact = function(contact){
+        console.log(contact)
+        $scope.contacts.$remove(contact);
+        $scope.isContactDeleted = true;
         
+    };
+    
+    $scope.closeDeleteAlert = function(){
+        $scope.isContactDeleted = false;
+    }
+    
+    
+    
+    //clear fields
+    $scope.clearFields = function(){
+        $scope.name = constants.EMPTY_STRING;
+        $scope.email = constants.EMPTY_STRING;
+        $scope.company = constants.EMPTY_STRING;
+        $scope.work_phone = constants.EMPTY_STRING;
+        $scope.mobile_phone = constants.EMPTY_STRING;
+        $scope.home_phone = constants.EMPTY_STRING;
+        $scope.street_address = constants.EMPTY_STRING;
+        $scope.city = constants.EMPTY_STRING;
+        $scope.state = constants.EMPTY_STRING;
+        $scope.zip = constants.EMPTY_STRING;
+
+    }
+    
+    //build json object and return
+    $scope.addObject = function(){
         //Assign Values
         if($scope.name)           { var name=$scope.name } else { var name = null; } 
         if($scope.email)          { var email=$scope.email } else { var email = null; } 
@@ -39,8 +84,7 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
         if($scope.city)           { var city=$scope.city} else { var city = null; } 
         if($scope.zip)            { var zip=$scope.zip } else { var zip = null; } 
         
-        //Build object
-        $scope.contacts.$add({
+        return {
             name:name,
             email:email,
             phone:{
@@ -54,30 +98,8 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
                 zip:zip
             }
             
-        }).then(function(){
-            var id = ref.key;
-            console.log(ref);
-            console.log("adding conatc id"+id);
-            console.log($scope.contacts);
-            
-            $scope.clearFields();
-            $scope.isAddFormShow  =false;
-        });
-    }
-    
-    
-    $scope.clearFields = function(){
-        $scope.name = "";
-        $scope.email = "";
-        $scope.company = "";
-        $scope.work_phone = "";
-        $scope.mobile_phone = "";
-        $scope.home_phone = "";
-        $scope.street_address = "";
-        $scope.city = "";
-        $scope.state = "";
-        $scope.zip = "";
-
+        }
+        
     }
     
 }]);

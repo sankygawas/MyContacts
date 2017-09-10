@@ -1,9 +1,13 @@
 <div class="row">
         <div class="user-add small-12 large-centered columns"><a ng-click="showAddForm()"><i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a>
         </div>
-
+        <div class="user-add small-12 large-centered columns">
+             <div ng-show="isContactDeleted" data-alert class="alert-box alert radius ">Contact deleted<a ng-click="closeDeleteAlert()" class="close">&times;</a></div>
+        </div>
+       
         
-        <div class="small-12 large-centered columns" ng-show="isAddFormShow">
+        <div id="form" class="small-12 large-centered columns" ng-show="isAddFormShow">
+            
             <form ng-submit="submitAddContactForm()">
                 <div class="row">
                     <div class="large-5 columns">
@@ -62,12 +66,10 @@
                 
                 <div class="row">
                     <div class="large-12 columns">
-                       <input type="submit" value="Add Contact" class="button tiny success radius">
+                       <input type="submit" value="Add Contact" class="button small success radius">
                     </div>
                 </div>
             </form>
-            {{isAddFormShow}}
-            
         </div>
 
         <div class="small-12 large-centered columns">
@@ -75,7 +77,7 @@
           <thead>
             <tr class="table-expand-row">
               <th width="250">Name</th>
-              <th width="150">Mobile</th>
+              <th width="200">Mobile</th>
               <th>Email</th>
               <th width="100">Actions</th>
             </tr>
@@ -88,7 +90,7 @@
               <td>
                   <ul class="button-group text-center">
                       <a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit Contact"></i></a>
-                      <a href="#" ><i class="fa fa-times " aria-hidden="true" title="Delete Contact" style="color:Red"></i></a>
+                      <a ng-click="deleteContact(contact)" ><i class="fa fa-times " aria-hidden="true" title="Delete Contact" style="color:Red"></i></a>
                   </ul>
                 </td>
             </tr>
