@@ -9,7 +9,7 @@ angular.module('myContacts.contacts', ['ngRoute'])
   });
 }])
 
-.controller('ContactsController', [function($scope) {
+.controller('ContactsController',function($scope) {
     $scope.msg = "inside contacts";
-    console.log(msg);
-}]);
+    console.log($scope.msg);
+});
