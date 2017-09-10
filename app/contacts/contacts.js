@@ -26,6 +26,8 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
     $scope.isAddFormShow = false;
     $scope.showAddForm = function(){
         $scope.isAddFormShow = !$scope.isAddFormShow;    
+        $scope.isEditFormShow = false;
+        $scope.clearFields();
     }
     
     //add the contact
@@ -39,6 +41,9 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
             
             //hide the form
             $scope.isAddFormShow  = false;
+            
+            //show message
+            $scope.isContactAdded = true;
         });
     }
     
@@ -50,8 +55,58 @@ angular.module('myContacts.contacts', ['ngRoute','firebase'])
         
     };
     
-    $scope.closeDeleteAlert = function(){
+    $scope.closeAlert = function(){
         $scope.isContactDeleted = false;
+        $scope.isContactAdded = false;
+    }
+    
+    
+    //submit edit contact
+    $scope.submitEditContactForm = function(){
+        //get id
+        var id = $scope.id
+        //get record
+        var record = $scope.contacts.$getRecord(id);
+           console.log(record);
+        
+        //assign record
+        record.name =          $scope.name;
+        record.email =         $scope.email;
+        record.company =       $scope.company ;
+        record.phone.work_phone =    $scope.work_phone;
+        record.phone.mobile_phone =  $scope.mobile_phone ;
+        record.phone.home_phone =    $scope.home_phone;
+        record.address.street_address =$scope.street_address;
+        record.address.city =          $scope.city ;
+        record.address.state =         $scope.state;
+        record.address.zip =           $scope.zip;
+        
+        //save record to db
+        $scope.contacts.$save(record);
+        //clear all fields
+        $scope.clearFields();
+        $scope.isEditFormShow = false;
+    };
+    
+     //show/hide edit form
+    $scope.isEditFormShow = false;
+    $scope.showEditForm = function(contact){
+        $scope.isEditFormShow = !$scope.isEditFormShow;   
+        $scope.isAddFormShow = false;
+       console.log(contact);
+        $scope.id =            contact.$id;
+        $scope.name =          contact.name;
+        $scope.email =         contact.email;
+        $scope.company =       contact.company ;
+        $scope.work_phone =    contact.phone.work_phone;
+        $scope.mobile_phone =  contact.phone.mobile_phone ;
+        $scope.home_phone =    contact.phone.home_phone;
+        $scope.street_address =contact.address.street_address;
+        $scope.city =          contact.address.city ;
+        $scope.state =         contact.address.state;
+        $scope.zip =           contact.address.zip;
+        
+        
     }
     
     

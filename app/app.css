@@ -54,18 +54,3 @@
 .row .large-5 input:-moz-placeholder { /* Firefox 18- */
   color: grey;
 }
-
-#form{
-      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-}
-
-/*#form {
-    transition: opacity 1s ease-out;
-    opacity: 0; 
-    height: 0;
-    overflow: hidden;
-}
-#form.active {
-    opacity: 1;
-    height: auto;
-}*/
