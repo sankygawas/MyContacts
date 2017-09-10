@@ -35,3 +35,19 @@
 .user-add a{
     color:darkgray;
 }
+
+.row .large-5 input{
+    margin-bottom:20px;
+    border-radius:5px;
+}
+
+.row .large-5 input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: grey;
+}
+.row .large-5 input::-moz-placeholder { /* Firefox 19+ */
+ color: grey;
+}
+
+.row .large-5 input:-moz-placeholder { /* Firefox 18- */
+  color: #eee;
+}

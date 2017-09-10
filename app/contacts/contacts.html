@@ -1,29 +1,99 @@
 <div class="row">
-<div class="small-12 large-centered columns">
-    <div class="user-add"><a href="#" ><i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a>
-    </div>
-<table class="table-expand">
-  <thead>
-    <tr class="table-expand-row">
-      <th width="250">Name</th>
-      <th width="150">Mobile</th>
-      <th>Email</th>
-      <th width="100">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="table-expand-row" data-open-details>
-      <td>Sanket</td>
-      <td>91+ 9028506985</td>
-      <td class="text-right">sanketgawas1993@gmail.com</td>
-      <td>
-          <ul class="button-group text-center">
-              <a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit Contact"></i></a>
-              <a href="#" ><i class="fa fa-times " aria-hidden="true" title="Delete Contact" style="color:Red"></i></a>
-          </ul>
-        </td>
-    </tr>
-  </tbody>
-</table>
-</div>
+        <div class="user-add small-12 large-centered columns"><a ng-click="showAddForm()"><i class="fa fa-user-plus fa-2x" aria-hidden="true"></i></a>
+        </div>
+
+        
+        <div class="small-12 large-centered columns" ng-show="isAddFormShow">
+            <form ng-submit="submitAddContactForm()">
+                <div class="row">
+                    <div class="large-5 columns">
+                        <input type="text" name="name" id="name" ng-model="name" placeholder="Name" class="[radius round]" required>
+                    </div>
+                    <div class="large-5 columns">
+                        <input type="text" name="email" id="email" ng-model="email"  placeholder="Email" required>
+                    </div>
+                    <div class="large-4 columns end">
+                    </div>
+                </div>
+                
+                  <div class="row">
+                    <div class="large-5 columns">
+                        <input type="text" name="name" id="name" ng-model="name" placeholder="Company Name">
+                    </div>
+                    <div class="large-5 columns">
+                        <input type="text" name="email" id="email" ng-model="email"  placeholder="Work Phone">
+                    </div>
+                    <div class="large-4 columns end">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="large-5 columns">
+                        <input type="text" name="name" id="name" ng-model="name" placeholder="Mobile Phone">
+                    </div>
+                    <div class="large-5 columns">
+                        <input type="text" name="email" id="email" ng-model="email"  placeholder="Home Phone">
+                    </div>
+                    <div class="large-4 columns end">
+                    </div>
+                </div>
+                
+                 <div class="row">
+                    <div class="large-5 columns">
+                        <input type="text" name="name" id="name" ng-model="name" placeholder="Street Address">
+                    </div>
+                    <div class="large-5 columns">
+                        <input type="text" name="email" id="email" ng-model="email"  placeholder="City">
+                    </div>
+                    <div class="large-4 columns end">
+                    </div>
+                </div>
+                
+                 <div class="row">
+                    <div class="large-5 columns">
+                        <input type="text" name="name" id="name" ng-model="name" placeholder="State">
+                    </div>
+                    <div class="large-5 columns">
+                        <input type="text" name="email" id="email" ng-model="email"  placeholder="Zip Code">
+                    </div>
+                    <div class="large-4 columns end">
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="large-12 columns">
+                       <input type="submit" value="Add Contact" class="button tiny success radius">
+                    </div>
+                </div>
+            </form>
+            {{isAddFormShow}}
+            
+        </div>
+
+        <div class="small-12 large-centered columns">
+        <table class="table-expand" width="100%">
+          <thead>
+            <tr class="table-expand-row">
+              <th width="250">Name</th>
+              <th width="150">Mobile</th>
+              <th>Email</th>
+              <th width="100">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-expand-row" ng-repeat="contact in contacts">
+              <td>{{contact.name}}</td>
+              <td>{{contact.phone.mobile}}</td>
+              <td class="text-right">{{contact.email}}</td>
+              <td>
+                  <ul class="button-group text-center">
+                      <a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit Contact"></i></a>
+                      <a href="#" ><i class="fa fa-times " aria-hidden="true" title="Delete Contact" style="color:Red"></i></a>
+                  </ul>
+                </td>
+            </tr>
+              
+          </tbody>
+        </table>
+        </div>
 </div>
