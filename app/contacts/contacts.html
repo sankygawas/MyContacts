@@ -18,10 +18,10 @@
                 
                   <div class="row">
                     <div class="large-5 columns">
-                        <input type="text" name="name" id="name" ng-model="name" placeholder="Company Name">
+                        <input type="text" name="company" id="company" ng-model="company" placeholder="Company Name">
                     </div>
                     <div class="large-5 columns">
-                        <input type="text" name="email" id="email" ng-model="email"  placeholder="Work Phone">
+                        <input type="text" name="work_phone" id="work_phone" ng-model="work_phone"  placeholder="Work Phone">
                     </div>
                     <div class="large-4 columns end">
                     </div>
@@ -29,10 +29,10 @@
                 
                 <div class="row">
                     <div class="large-5 columns">
-                        <input type="text" name="name" id="name" ng-model="name" placeholder="Mobile Phone">
+                        <input type="text" name="mobile_phone" id="mobile_phone" ng-model="mobile_phone" placeholder="Mobile Phone">
                     </div>
                     <div class="large-5 columns">
-                        <input type="text" name="email" id="email" ng-model="email"  placeholder="Home Phone">
+                        <input type="text" name="home_phone" id="home_phone" ng-model="home_phone"  placeholder="Home Phone">
                     </div>
                     <div class="large-4 columns end">
                     </div>
@@ -40,10 +40,10 @@
                 
                  <div class="row">
                     <div class="large-5 columns">
-                        <input type="text" name="name" id="name" ng-model="name" placeholder="Street Address">
+                        <input type="text" name="street_address" id="street_address" ng-model="street_address" placeholder="Street Address">
                     </div>
                     <div class="large-5 columns">
-                        <input type="text" name="email" id="email" ng-model="email"  placeholder="City">
+                        <input type="text" name="city" id="city" ng-model="city"  placeholder="City">
                     </div>
                     <div class="large-4 columns end">
                     </div>
@@ -51,10 +51,10 @@
                 
                  <div class="row">
                     <div class="large-5 columns">
-                        <input type="text" name="name" id="name" ng-model="name" placeholder="State">
+                        <input type="text" name="state" id="state" ng-model="state" placeholder="State">
                     </div>
                     <div class="large-5 columns">
-                        <input type="text" name="email" id="email" ng-model="email"  placeholder="Zip Code">
+                        <input type="text" name="zip" id="zip" ng-model="zip"  placeholder="Zip Code">
                     </div>
                     <div class="large-4 columns end">
                     </div>
@@ -83,8 +83,8 @@
           <tbody>
             <tr class="table-expand-row" ng-repeat="contact in contacts">
               <td>{{contact.name}}</td>
-              <td>{{contact.phone.mobile}}</td>
-              <td class="text-right">{{contact.email}}</td>
+              <td>{{contact.phone.mobile_phone}}</td>
+              <td class="text-left">{{contact.email}}</td>
               <td>
                   <ul class="button-group text-center">
                       <a href="#" ><i class="fa fa-pencil-square-o" aria-hidden="true" title="Edit Contact"></i></a>
